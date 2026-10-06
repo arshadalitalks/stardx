@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - StarDX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 flex items-center justify-center min-h-screen">
+    <div id="admin-auth" class="w-full max-w-md p-8 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-red-500">STAR<span class="text-white">DX</span> Admin</h2>
+            <p class="text-sm text-slate-400 mt-1">Restricted Administrative Access</p>
+        </div>
+        <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs uppercase font-semibold text-slate-400 mb-2">Admin Username</label>
+                <input type="text" id="admin-user" required class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-red-500 text-sm">
+            </div>
+            <div>
+                <label class="block text-xs uppercase font-semibold text-slate-400 mb-2">Secret Password</label>
+                <input type="password" id="admin-pass" required class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-red-500 text-sm">
+            </div>
+            <button type="submit" class="w-full py-3 bg-red-600 hover:bg-red-500 font-semibold rounded-xl transition shadow-lg shadow-red-600/30">Access Control Panel</button>
+        </form>
+    </div>
+
+    <!-- Hidden Admin Dashboard -->
+    <div id="admin-dashboard" class="hidden w-full max-w-4xl p-8 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl">
+        <div class="flex justify-between items-center mb-8 border-b border-slate-800 pb-4">
+            <h2 class="text-2xl font-bold text-red-500">Admin Control Center</h2>
+            <button onclick="location.reload()" class="px-4 py-2 bg-slate-800 text-xs font-semibold rounded-lg">Log Out</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="p-6 bg-slate-950 border border-slate-800 rounded-xl">
+                <span class="text-xs text-slate-400 uppercase">Total Registered Users</span>
+                <div class="text-3xl font-extrabold text-blue-400 mt-2">1,248</div>
+            </div>
+            <div class="p-6 bg-slate-950 border border-slate-800 rounded-xl">
+                <span class="text-xs text-slate-400 uppercase">Pending Deposit Requests</span>
+                <div class="text-3xl font-extrabold text-amber-400 mt-2">3 Requests</div>
+            </div>
+        </div>
+        <div class="p-6 bg-slate-950 border border-slate-800 rounded-xl">
+            <h3 class="font-bold text-lg mb-4">Pending Client Deposits</h3>
+            <div class="text-sm text-slate-400 flex justify-between items-center bg-slate-900 p-4 rounded-lg">
+                <span>User: trader@stardx.com | Amount: ₹25,000 (UPI)</span>
+                <div class="space-x-2">
+                    <button onclick="alert('Deposit Approved!')" class="px-3 py-1 bg-green-600 text-xs font-semibold rounded">Approve</button>
+                    <button onclick="alert('Deposit Rejected!')" class="px-3 py-1 bg-red-600 text-xs font-semibold rounded">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            document.getElementById('admin-auth').classList.add('hidden');
+            document.getElementById('admin-dashboard').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
